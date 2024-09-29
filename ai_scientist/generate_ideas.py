@@ -412,6 +412,8 @@ def check_idea_novelty(
                 assert json_output is not None, "Failed to extract JSON from LLM output"
 
                 ## SEARCH FOR PAPERS
+                if j == max_num_iterations - 1:
+                    continue
                 query = json_output["Query"]
                 papers = search_for_papers(query, result_limit=10)
                 if papers is None:
